@@ -41,3 +41,18 @@ const numeroString = "30";
 console.log(typeof nombre);
 console.log(typeof nombre1);
 console.log(typeof numeroString);
+
+//BigInt
+const numeroGrande =
+  BigInt(113943935930593039303059309530593050305305035035930935);
+console.log(typeof numeroGrande);
+
+const numero = 10;
+const numero2 = 20;
+// console.log(numero + numeroGrande); // error no se puede hacer operaciones entre este tipo de datps
+
+//Symbol (aunque tengan el mismo valor son diferentes)
+const primerSymbol = Symbol(20);
+const segundoSymbol = Symbol(20);
+
+console.log(primerSymbol === segundoSymbol); //false
