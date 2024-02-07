@@ -10,6 +10,8 @@ function App() {
    * 
    */
   const [ pacientes, setPacientes ] = useState([]);
+  //edición de un nuevo paciente
+  const [paciente, setPaciente] = useState({});
   return (
     //Aqui los componentes
     <>
@@ -19,9 +21,11 @@ function App() {
           <Formulario
           pacientes = { pacientes }
           setPacientes = { setPacientes}
+          paciente = {paciente}
           />
           <ListadoPacientes
            pacientes = {pacientes}
+           setPaciente = {setPaciente}
           />
         </div>
         
