@@ -12,6 +12,13 @@ function App() {
   const [ pacientes, setPacientes ] = useState([]);
   //edición de un nuevo paciente
   const [paciente, setPaciente] = useState({});
+
+  const eliminarPaciente = (id)=>{
+    const pacientesActualizados = pacientes.filter(paciente => paciente.id !== id);
+    setPacientes(pacientesActualizados);
+  }
+
+ 
   return (
     //Aqui los componentes
     <>
@@ -27,6 +34,7 @@ function App() {
           <ListadoPacientes
            pacientes = {pacientes}
            setPaciente = {setPaciente}
+           eliminarPaciente = {eliminarPaciente}
           />
         </div>
         

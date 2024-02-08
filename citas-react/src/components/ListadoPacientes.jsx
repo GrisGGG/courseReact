@@ -1,6 +1,6 @@
 import Paciente from "./Paciente"
 
-function ListadoPacientes({pacientes, setPaciente}) {
+function ListadoPacientes({pacientes, setPaciente, eliminarPaciente}) {
   
  console.log(pacientes.length);
 
@@ -21,6 +21,7 @@ function ListadoPacientes({pacientes, setPaciente}) {
           key = {paciente.id}
           paciente = {paciente}
           setPaciente = {setPaciente}
+          eliminarPaciente = {eliminarPaciente}
           />
       ))
           }
