@@ -1,7 +1,7 @@
 import Header from './components/Header';
 import Formulario from './components/Formulario';
 import ListadoPacientes from './components/ListadoPacientes';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 function App() {
   //Aquí van las funciones
   /**REGLAS DE LOS HOOKS
@@ -9,9 +9,13 @@ function App() {
    * No se deben colocar dentro de condicionales,tampoco después de un return
    * 
    */
-  const [ pacientes, setPacientes ] = useState([]);
+  const [ pacientes, setPacientes ] = useState( JSON.parse(localStorage.getItem('pacientes')) ?? []);
   //edición de un nuevo paciente
   const [paciente, setPaciente] = useState({});
+  
+  useEffect(() => {
+    localStorage.setItem('pacientes', JSON.stringify(pacientes))
+  }, [pacientes]);
 
   const eliminarPaciente = (id)=>{
     const pacientesActualizados = pacientes.filter(paciente => paciente.id !== id);
