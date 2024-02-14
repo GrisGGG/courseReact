@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import  Header from './components/Header';
+import Modal from './components/Modal';
 import IconoNuevoGasto from './assets/img/nuevo-gasto.svg';
 
 
@@ -7,10 +8,15 @@ function App() {
   const [presupuesto, setPresupuesto] = useState(0);
   const [presupuestoValido, setPresupuestoValido] = useState(false);
   const [modal, setModal] = useState(false);
+  const [animarModal, setAnimarModal] = useState(false);
 
   const handleNuevoGasto =()=>{
-    console.log('clickeaste nuevo');
     setModal(true);
+
+    setTimeout(()=>{
+      setAnimarModal(true)
+      console.log('ANIMANDO');
+    }, 500)
   }
 
   return (
@@ -34,7 +40,11 @@ function App() {
           }
           {
             modal && (
-              <p>desde modal</p>
+              <Modal 
+              setModal={setModal}
+              animarModal={animarModal}
+              setAnimarModal={setAnimarModal}
+              />
             )
           }
     </div>
