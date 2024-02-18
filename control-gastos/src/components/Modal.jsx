@@ -25,7 +25,13 @@ const Modal = ({setModal, animarModal, setAnimarModal, guardarGasto}) => {
       setTimeout(()=>{
         setMensaje('')
       }, 2000)
-      guardarGasto([nombre, cantidad,categoria])
+      guardarGasto({nombre, cantidad,categoria})
+
+      setAnimarModal(false)
+
+      setTimeout(()=>{
+          setModal(false)
+      },500)
       return;
      
   }
