@@ -6,7 +6,8 @@ const ControlPresupuesto = ({
     gastos,
     setGastos,
     presupuesto,
-    setPresupuesto
+    setPresupuesto,
+    setPresupuestoValido
 }) => {
 
     const [porcentaje, setPorcentaje] = useState(20)
@@ -40,6 +41,8 @@ const ControlPresupuesto = ({
         if(resultado){
             setGastos([])
             setPresupuesto(0);
+            setPresupuestoValido(false)
+            
             
         }
     }
