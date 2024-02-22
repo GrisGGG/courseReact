@@ -1,15 +1,40 @@
 import Gasto from "./Gasto"
 
-const ListadoGastos = ({gastos, setGastoEditar}) => {
+const ListadoGastos = ({
+  gastos, 
+  setGastoEditar,
+  eliminarGasto,
+  filtro,
+  gastosFiltrados,
+  setGastosFiltrados
+}) => {
   return (
-    <div>
-      <p>{gastos.length ? 'gastos': 'no hay gastos'}</p>
+    <div className="listado-gastos contenedor">
+    {
+      filtro ? (
+        <>
+          <p>{gastosFiltrados.length ? 'Gastos': 'No hay gastos aún de esta categoria'}</p>
      
-      {gastos.map(gasto => <Gasto
-        key={gasto.id}
-        gasto={gasto}
-        setGastoEditar={setGastoEditar}
-      />)}
+     {gastosFiltrados.map(gasto => <Gasto
+       key={gasto.id}
+       gasto={gasto}
+       setGastoEditar={setGastoEditar}
+       eliminarGasto={eliminarGasto}
+     />)}
+        </>
+      ):(
+        <>
+          <p>{gastos.length ? 'Gastos': 'No hay gastos aún'}</p>
+     
+     {gastos.map(gasto => <Gasto
+       key={gasto.id}
+       gasto={gasto}
+       setGastoEditar={setGastoEditar}
+       eliminarGasto={eliminarGasto}
+     />)}
+        </>
+      )
+    }
     </div>
   )
 }
