@@ -41,7 +41,7 @@ const ControlPresupuesto = ({
         if(resultado){
             setGastos([])
             setPresupuesto(0);
-            setPresupuestoValido(false)
+            setPresupuestoValido(false);
             
             
         }
