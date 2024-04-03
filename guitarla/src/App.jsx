@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 import Guitar from "./components/Guitar"
 import Header from "./components/Header"
-import db from "./data/db"
+import {db} from "./data/db"
 import { useState } from "react"
 function App() {
     //state
@@ -16,10 +16,11 @@ function App() {
         <h2 className="text-center">Nuestra Colección</h2>
 
         <div className="row mt-5">
-{data.map(()=>(
-            <Guitar/>
-
-))    
+            {data.map((guitar)=>(
+            <Guitar
+            guitar={guitar}
+            />   
+            ))    
 }        </div>
     </main>
 
