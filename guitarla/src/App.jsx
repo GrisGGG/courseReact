@@ -9,12 +9,22 @@ function App() {
     const [cart, setCart] = useState([]);
 
     function addToCart(item){
-       setCart(prevCart => [...prevCart, item])
+        const itemExists = cart.findIndex(guitar => guitar.id == item.id)
+        if(itemExists >= 0){//Sí existe
+            const updatedCart = [...cart]//tomo una copia del state
+            updatedCart[itemExists].quantity++;//en esta copia busco la pocision que ya existe y en el atributo quantity le aumento un uno
+            setCart(updatedCart)//actualizo el estado con la copia de este state
+        }else{
+            item.quantity =1;
+            setCart(prevCart => [...prevCart, item])
+        } 
     }
 
   return (
    <>
-   <Header></Header>
+   <Header
+   cart={cart}
+   ></Header>
    
     <main className="container-xl mt-5">
         <h2 className="text-center">Nuestra Colección</h2>
