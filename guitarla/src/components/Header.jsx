@@ -1,5 +1,9 @@
-
+import { useMemo } from "react";
 export default function  Header ({cart}){
+    //state derivado
+    const isEmpty = useMemo(()=> cart.length === 0, [cart]);
+    const cartTotal = useMemo(()=>cart.reduce( (total, item) => total + (item.quantity * item.price), 0), [cart])
+
   return (
     <header className="py-5 header">
         <div className="container-xl">
@@ -15,8 +19,11 @@ export default function  Header ({cart}){
                     >
                         <img className="img-fluid" src="./public/img/carrito.png" alt="imagen carrito" />
 
-                        <div id="carrito" className="bg-white p-3">
-                            <p className="text-center">El carrito esta vacio</p>
+                        <div id="carrito" className="bg-white p-3">       
+                            {isEmpty ? (
+                                <p className="text-center">El carrito esta vacio</p>
+                            ):(
+                                <>
                             <table className="w-100 table">
                                 <thead>
                                     <tr>
@@ -29,7 +36,7 @@ export default function  Header ({cart}){
                                 </thead>
                                 <tbody>
                                     {cart.map(guitar =>(
-                                    <tr>
+                                    <tr key={guitar.id}>
                                         <td>
                                             <img 
                                             className="img-fluid" 
@@ -67,10 +74,12 @@ export default function  Header ({cart}){
                                     ))}
                                 </tbody>
                             </table>
-
-                            <p className="text-end">Total pagar: <span className="fw-bold">$899</span></p>
+                           
+                            <p className="text-end">Total pagar: <span className="fw-bold">{cartTotal}</span></p>
                             <button className="btn btn-dark w-100 mt-3 p-2">Vaciar Carrito</button>
-                        </div>
+                           </>
+                           )}
+                            </div>
                     </div>
                 </nav>
             </div>
