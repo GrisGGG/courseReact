@@ -19,11 +19,15 @@ function App() {
             setCart(prevCart => [...prevCart, item])
         } 
     }
+    function removeFromCart(id){
+        setCart(prevCart => prevCart.filter(guitar => guitar.id !== id))
+    }
 
   return (
    <>
    <Header
    cart={cart}
+   removeFromCart={removeFromCart}
    ></Header>
    
     <main className="container-xl mt-5">
